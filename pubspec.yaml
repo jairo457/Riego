@@ -12,6 +12,7 @@ dependencies:
   get: ^4.6.6
   flutter_svg: ^2.0.10+1
   d_chart: ^2.9.1
+  one_clock: ^2.0.1
 
 dev_dependencies:
   flutter_test:

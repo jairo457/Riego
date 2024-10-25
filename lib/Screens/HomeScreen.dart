@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/record');
+                      Navigator.pushNamed(context, '/control');
                     },
                     style: ElevatedButton.styleFrom(
                       shape: CircleBorder(),
