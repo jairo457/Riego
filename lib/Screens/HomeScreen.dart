@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(
                 children: [
                   Text(
-                    "Histórico",
+                    "Plantas",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: (MediaQuery.of(context).size.width / 12),
@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/record');
+                      Navigator.pushNamed(context, '/plants');
                     },
                     style: ElevatedButton.styleFrom(
                       shape: CircleBorder(),

@@ -1,17 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:one_clock/one_clock.dart';
+import 'package:riego/Models/plant_model.dart';
+import 'package:riego/Network/ApiPlant.dart';
 
 class ControlScreen extends StatefulWidget {
-  const ControlScreen({super.key});
+  ControlScreen({super.key});
 
   @override
   State<ControlScreen> createState() => _ControlScreenState();
 }
 
 class _ControlScreenState extends State<ControlScreen> {
+  TextEditingController TxtName = TextEditingController();
+  TextEditingController TxtDescription = TextEditingController();
+  TextEditingController TxtLocation = TextEditingController();
+  ApiPlant? apiPlant;
+
+  void initState() {
+    super.initState();
+    apiPlant = ApiPlant();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final txtName = TextFormField(
+      decoration: const InputDecoration(
+          label: Text('Nombre'), border: OutlineInputBorder()),
+      controller: TxtName,
+    );
+    final txtDescription = TextFormField(
+      decoration: const InputDecoration(
+          label: Text('Descripcion'), border: OutlineInputBorder()),
+      controller: TxtDescription,
+    );
+
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -87,7 +110,27 @@ class _ControlScreenState extends State<ControlScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                  content: IntrinsicHeight(
+                                      child: Column(children: [
+                                Text(
+                                  "Nueva",
+                                  style: TextStyle(
+                                      fontSize:
+                                          (MediaQuery.of(context).size.width /
+                                              15),
+                                      fontFamily: "Raleway",
+                                      color: Colors.black),
+                                ),
+                                txtName,
+                                txtDescription
+                              ])));
+                            });
+                      },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
@@ -138,7 +181,9 @@ class _ControlScreenState extends State<ControlScreen> {
           children: [
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  apiPlant!.PostPlant_1(1);
+                },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -163,7 +208,9 @@ class _ControlScreenState extends State<ControlScreen> {
             ),
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  apiPlant!.PostPlant_2(1);
+                },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
